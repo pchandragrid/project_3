@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Developer Guide – Image Captioning Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="user_guide.html">User Guide</a></li>
+      <li><a href="architecture.html">Architecture</a></li>
+      <li><a href="analysis.html">Analysis & Results</a></li>
+      <li><a href="developer_guide.html" class="active">Developer Guide</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Developer Guide</h1>
+    <p>
+      Everything you need to set up the project, run experiments, and contribute to the codebase.
+    </p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Getting Started</h2>
+      <h3>Prerequisites</h3>
+      <ul>
+        <li>Python 3.10+</li>
+        <li>Git</li>
+        <li>Access to Hugging Face Hub (optional, for model uploads)</li>
+      </ul>
+
+      <h3>Installation</h3>
+      <p>
+        Clone the repository and set up a virtual environment:
+      </p>
+      <pre><code>git clone https://github.com/pchandragrid/ML-Image-Captioning.git
+cd ML-Image-Captioning
+
+python -m venv .venv
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
+
+pip install -r requirements.txt</code></pre>
+    </section>
+
+    <section>
+      <h2>Running the Application</h2>
+      <p>
+        To start the Streamlit web app locally:
+      </p>
+      <pre><code>streamlit run apps/app.py</code></pre>
+      <p>
+        This will open the app in your default browser (usually at <code>http://localhost:8501</code>).
+      </p>
+    </section>
+
+    <section>
+      <h2>Project Structure</h2>
+      <p>The codebase is organized into logical modules:</p>
+      <div class="grid">
+        <div class="card">
+          <h3><code>apps/</code> – Web Application</h3>
+          <p>
+            Contains the user-facing Streamlit app.
+          </p>
+          <ul>
+            <li><code>apps/app.py</code> – Main application entry point.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3><code>src/data/</code> – Data Handling</h3>
+          <p>
+            Dataset classes for loading and processing COCO data.
+          </p>
+          <ul>
+            <li><code>coco_advanced_dataset.py</code> – Advanced dataset with filtering.</li>
+            <li><code>coco_vit_gpt2_dataset.py</code> – Dataset for ViT-GPT2 model.</li>
+            <li><code>coco_git_dataset.py</code> – Dataset for GIT model.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3><code>src/training/</code> – Training Scripts</h3>
+          <p>
+            Scripts to fine-tune the models.
+          </p>
+          <ul>
+            <li><code>train_phase2.py</code> – Advanced training loop (BLIP).</li>
+            <li><code>train_vit_gpt2.py</code> – Training script for ViT-GPT2.</li>
+            <li><code>train_git.py</code> – Training script for GIT.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3><code>src/evaluation/</code> – Evaluation</h3>
+          <p>
+            Tools for measuring model performance.
+          </p>
+          <ul>
+            <li><code>evaluate.py</code> – Computes CIDEr scores and metrics.</li>
+          </ul>
+        </div>
+        
+        <div class="card">
+          <h3><code>src/plot/</code> – Visualization</h3>
+          <p>
+             Scripts to generate analysis plots.
+          </p>
+          <ul>
+             <li><code>beam_experiment_plot.py</code></li>
+             <li><code>caption_length_analysis.py</code></li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h3><code>HuggingFaceUploads/</code></h3>
+          <p>
+            Utilities for model distribution.
+          </p>
+          <ul>
+            <li><code>uploadtohf.py</code> – Uploads models to Hugging Face Hub.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Running Experiments</h2>
+      <h3>Training Models</h3>
+      <p>
+        To train the BLIP model (Phase 2):
+      </p>
+      <pre><code>python -m src.training.train_phase2</code></pre>
+      <p>
+        Ensure you have the COCO dataset prepared in <code>src/data/raw/</code> or configured correctly in the dataset scripts.
+      </p>
+
+      <h3>Generating Plots</h3>
+      <p>
+        To regenerate the analysis plots:
+      </p>
+      <pre><code>python src/plot/beam_experiment_plot.py
+python src/plot/caption_length_analysis.py</code></pre>
+    </section>
+
+    <section>
+      <h2>Contributing</h2>
+      <p>
+        We welcome contributions! Please follow these steps:
+      </p>
+      <ol>
+        <li>Fork the repository.</li>
+        <li>Create a new branch for your feature or bug fix.</li>
+        <li>Make your changes and commit them with clear messages.</li>
+        <li>Push your changes to your fork.</li>
+        <li>Submit a Pull Request.</li>
+      </ol>
+    </section>
+  </main>
+</body>
+</html>

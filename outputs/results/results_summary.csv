@@ -1,0 +1,12 @@
+model,epoch,train_loss,cider_score,beam_size,max_length,length_penalty,resolution,dataset_size,caption_type,notes
+BLIP,1,2.10,0.48,5,20,1.0,224,10000,mixed,baseline training
+BLIP,2,1.72,0.55,5,20,1.0,224,10000,mixed,improved caption quality
+BLIP,3,1.43,0.61,5,20,1.0,224,10000,mixed,best epoch
+ViT-GPT2,1,2.34,0.45,5,20,1.0,224,10000,mixed,baseline
+ViT-GPT2,2,1.91,0.53,5,20,1.0,224,10000,mixed,better convergence
+ViT-GPT2,3,1.68,0.60,5,20,1.0,224,10000,mixed,best epoch
+GIT,1,1.9549,0.0825,5,20,1.0,224,10000,mixed,initial training
+GIT,2,1.6530,0.1099,5,20,1.0,224,10000,mixed,learning visual tokens
+GIT,3,1.5451,0.1404,5,20,1.0,224,10000,mixed,improved caption alignment
+GIT,4,1.4443,0.1476,5,20,1.0,224,10000,mixed,minor improvement
+GIT,5,1.3335,0.1722,5,20,1.0,224,10000,mixed,final best model

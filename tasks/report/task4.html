@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Project 3 – Task 4</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../docs/styles.css" />
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Report Home</a></li>
+      <li><a href="task1.html">Task 1</a></li>
+      <li><a href="task2.html">Task 2</a></li>
+      <li><a href="task3.html">Task 3</a></li>
+      <li><a href="task4.html" class="active">Task 4</a></li>
+      <li><a href="task5.html">Task 5</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Task 4 – Caption Diversity and Concept Activation Vector Style Steering</h1>
+    <p>
+      Generates diverse captions, computes diversity metrics, learns concept directions from hidden-state statistics,
+      and applies a CAV-style steering vector during decoding to control caption style (e.g., short → long,
+      short → detailed).
+    </p>
+  </header>
+
+  <main>
+    <section>
+      <h2>What this task does</h2>
+      <div class="grid">
+        <div class="card"><h3>1) Diversity via nucleus sampling</h3><p>Uses nucleus sampling with <code>top_p=0.9</code> to generate multiple captions per image.</p></div>
+        <div class="card"><h3>2) Diversity metrics</h3><p>Computes <code>unique ngrams / total ngrams</code> to quantify repetition vs novelty.</p></div>
+        <div class="card"><h3>3) Learn concept directions</h3><p>From hidden-state means it learns steering directions: <code>short → long</code> and <code>short → detailed</code>.</p></div>
+        <div class="card"><h3>4) Steer hidden states during decoding</h3><p>Applies <code>h_steered = h + λ * direction</code> to bias generation towards the chosen style.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Folder layout</h2>
+      <pre><code>tasks/task4_style_steering/
+  artifacts/
+    captions/diversity_captions.jsonl
+    steering/dir_short_to_*.npy
+  results/
+    reports/
+      steering_outputs.csv
+      style_steering_summary.md / style_steering_summary.json
+    figures/style_length_shift.png</code></pre>
+    </section>
+
+    <section>
+      <h2>How to run</h2>
+      <pre><code>python -m tasks.task4_style_steering.run_style_steering \
+  --checkpoint_dir tasks/task1_blip_optimization/checkpoints/blip_gc_mp_224 \
+  --annotation_path src/data/raw/captions_validation.jsonl \
+  --image_dir src/data/raw/val2017 \
+  --style_annotation_path src/data/processed/subset_10k.jsonl \
+  --style_image_dir src/data/raw/train2017 \
+  --num_images 200 \
+  --num_steer_images 80 \
+  --num_captions_per_image 5 \
+  --top_p 0.9 \
+  --device cpu</code></pre>
+    </section>
+
+    <section>
+      <h2>Key outputs</h2>
+      <ul>
+        <li><code>tasks/task4_style_steering/artifacts/captions/diversity_captions.jsonl</code></li>
+        <li><code>tasks/task4_style_steering/artifacts/steering/dir_short_to_*.npy</code></li>
+        <li><code>tasks/task4_style_steering/results/reports/steering_outputs.csv</code></li>
+        <li><code>tasks/task4_style_steering/results/reports/style_steering_summary.md</code> + <code>.json</code></li>
+        <li><code>tasks/task4_style_steering/results/figures/style_length_shift.png</code></li>
+      </ul>
+
+      <h2>Observed results (current run)</h2>
+      <div class="grid">
+        <div class="card"><h3>Diversity</h3><p>Mean caption diversity (unique ngrams / total ngrams): <strong>0.7373</strong><br/>Mean pre-beam hidden-state diversity: <strong>0.8460</strong></p></div>
+        <div class="card"><h3>Style shift (mean caption length)</h3><p>Baseline: <strong>10.275</strong><br/>Steered Short: <strong>10.7875</strong><br/>Steered Long: <strong>10.45</strong><br/>Steered Detailed: <strong>10.1125</strong></p></div>
+      </div>
+
+      <div class="plot">
+        <img src="../task4_style_steering/results/figures/style_length_shift.png" alt="style length shift" />
+        <div class="plot-caption">Length shift plot (baseline vs steered generations)</div>
+      </div>
+
+      <h3>Keyword proxy: diverse vs repetitive image types</h3>
+      <p>
+        The task uses a lightweight keyword-frequency proxy to illustrate which categories appear more or less
+        frequently across low- vs high-diversity outputs.
+      </p>
+      <table style="width:100%; border-collapse: collapse; margin-top: 12px;">
+        <thead>
+          <tr>
+            <th style="border-bottom:1px solid #e2e8f0; text-align:left; padding:10px;">Low-diversity keywords</th>
+            <th style="border-bottom:1px solid #e2e8f0; text-align:left; padding:10px;">High-diversity keywords</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">
+              man (38), sitting (21), standing (20), group (15), people (11), table (10), holding (10),
+              dog (10), cake (9), next (8), field (8), person (8)
+            </td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">
+              two (20), sitting (13), man (10), table (9), front (8), standing (8), young (8),
+              dog (7), people (7), next (6), three (6), holding (5)
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Interpretation</h3>
+      <ul>
+        <li>If <strong>steered-long &gt; baseline &gt; steered-short</strong>, the steering direction is behaving as intended.</li>
+        <li>Detailed steering should increase descriptive tokens and relational phrasing.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Project 3 – Task 2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../docs/styles.css" />
+  <style>
+    .gallery-controls { margin-top: 12px; display: grid; grid-template-columns: 1fr 160px; gap: 12px; align-items: center; }
+    .gallery-controls input[type="range"] { width: 100%; }
+    .gallery-main img { width: 100%; height: auto; border-radius: 12px; }
+    .thumb-grid { display: grid; grid-template-columns: repeat(4, minmax(120px, 1fr)); gap: 12px; margin-top: 12px; }
+    .thumb { cursor: pointer; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; background: #fff; }
+    .thumb img { display:block; width:100%; height:auto; }
+    .thumb span { display:block; padding: 6px 10px; font-size: 0.85rem; color:#475569; }
+  </style>
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Report Home</a></li>
+      <li><a href="task1.html">Task 1</a></li>
+      <li><a href="task2.html" class="active">Task 2</a></li>
+      <li><a href="task3.html">Task 3</a></li>
+      <li><a href="task4.html">Task 4</a></li>
+      <li><a href="task5.html">Task 5</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Task 2 – Attention Visualization and Cross-Attention Rollout</h1>
+    <p>
+      Generates captions while extracting per-step decoder cross-attention, renders attention grids,
+      performs cross-layer rollout, and computes IoU-based grounding between attended words and COCO object boxes.
+    </p>
+  </header>
+
+  <main>
+    <section>
+      <h2>What this task does</h2>
+      <div class="grid">
+        <div class="card"><h3>1) Caption generation + attention extraction</h3><p>Runs the checkpoint model and extracts cross-attention at each decoding step.</p></div>
+        <div class="card"><h3>2) Per-step attention maps</h3><p>Renders token-step heatmaps that show “where the model looked” while generating each word.</p></div>
+        <div class="card"><h3>3) Cross-layer rollout</h3><p>Creates rollout maps to aggregate attention across layers for more interpretable grounding patterns.</p></div>
+        <div class="card"><h3>4) Grounding with IoU</h3><p>Uses COCO object boxes to compute mean alignment IoU (word grounding quality).</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Folder layout</h2>
+      <pre><code>tasks/task2_attention_analysis/
+  run_attention_analysis.py
+  attention_utils.py
+  artifacts/
+    attention_maps/   # .npz per sample/step/layer
+    rollout_maps/     # .npy per sample/step
+  results/
+    figures/         # attention_grid_XXXX.png
+    reports/         # CSV + markdown summaries</code></pre>
+    </section>
+
+    <section>
+      <h2>How to run</h2>
+      <pre><code>python -m tasks.task2_attention_analysis.run_attention_analysis \
+  --checkpoint_dir tasks/task1_blip_optimization/checkpoints/blip_gc_mp_224 \
+  --annotation_path src/data/raw/captions_validation.jsonl \
+  --image_dir src/data/raw/val2017 \
+  --instances_json src/data/raw/instances_val2017.json \
+  --num_samples 100 \
+  --max_new_tokens 20 \
+  --grid_steps 5 \
+  --device cpu</code></pre>
+
+      <h3>Key dependency</h3>
+      <p>
+        This task expects Task 1’s BLIP checkpoint output. If you have a different checkpoint directory, update
+        <code>--checkpoint_dir</code> accordingly.
+      </p>
+    </section>
+
+    <section>
+      <h2>Key outputs</h2>
+      <ul>
+        <li><code>tasks/task2_attention_analysis/results/reports/attention_summary.md</code></li>
+        <li><code>tasks/task2_attention_analysis/results/reports/alignment_details.csv</code></li>
+        <li><code>tasks/task2_attention_analysis/results/figures/attention_grid_XXXX.png</code> (100 grids)</li>
+        <li><code>tasks/task2_attention_analysis/artifacts/attention_maps/</code> and <code>rollout_maps/</code></li>
+      </ul>
+
+      <h2>Key results (grounding)</h2>
+      <p><strong>Caption length → mean alignment IoU</strong></p>
+      <table style="width:100%; border-collapse: collapse; margin-top: 12px;">
+        <thead>
+          <tr>
+            <th style="border-bottom:1px solid #e2e8f0; text-align:left; padding:10px;">Caption Length</th>
+            <th style="border-bottom:1px solid #e2e8f0; text-align:left; padding:10px;">Mean Alignment IoU</th>
+            <th style="border-bottom:1px solid #e2e8f0; text-align:left; padding:10px;">Word Matches</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="border-bottom:1px solid #f1f5f9; padding:10px;">7</td><td style="border-bottom:1px solid #f1f5f9; padding:10px;">0.0000</td><td style="border-bottom:1px solid #f1f5f9; padding:10px;">1</td></tr>
+          <tr><td style="border-bottom:1px solid #f1f5f9; padding:10px;">8</td><td style="border-bottom:1px solid #f1f5f9; padding:10px;">0.1721</td><td style="border-bottom:1px solid #f1f5f9; padding:10px;">16</td></tr>
+          <tr><td style="border-bottom:1px solid #f1f5f9; padding:10px;">9</td><td style="border-bottom:1px solid #f1f5f9; padding:10px;">0.0919</td><td style="border-bottom:1px solid #f1f5f9; padding:10px;">29</td></tr>
+          <tr><td style="border-bottom:1px solid #f1f5f9; padding:10px;">10</td><td style="border-bottom:1px solid #f1f5f9; padding:10px;">0.1391</td><td style="border-bottom:1px solid #f1f5f9; padding:10px;">30</td></tr>
+          <tr><td style="border-bottom:1px solid #f1f5f9; padding:10px;">11</td><td style="border-bottom:1px solid #f1f5f9; padding:10px;">0.1610</td><td style="border-bottom:1px solid #f1f5f9; padding:10px;">11</td></tr>
+          <tr><td style="border-bottom:1px solid #f1f5f9; padding:10px;">12</td><td style="border-bottom:1px solid #f1f5f9; padding:10px;">0.0031</td><td style="border-bottom:1px solid #f1f5f9; padding:10px;">8</td></tr>
+          <tr><td style="border-bottom:1px solid #f1f5f9; padding:10px;">13</td><td style="border-bottom:1px solid #f1f5f9; padding:10px;">0.0000</td><td style="border-bottom:1px solid #f1f5f9; padding:10px;">1</td></tr>
+          <tr><td style="border-bottom:1px solid #f1f5f9; padding:10px;">14</td><td style="border-bottom:1px solid #f1f5f9; padding:10px;">0.0000</td><td style="border-bottom:1px solid #f1f5f9; padding:10px;">3</td></tr>
+          <tr><td style="border-bottom:1px solid #f1f5f9; padding:10px;">15</td><td style="border-bottom:1px solid #f1f5f9; padding:10px;">0.0000</td><td style="border-bottom:1px solid #f1f5f9; padding:10px;">1</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Interpretation</h3>
+      <ul>
+        <li>Higher mean IoU implies better grounding between attended decoding steps and object regions.</li>
+        <li>Very long captions can show lower mean IoU due to attention diffusion.</li>
+        <li>Inspect low-IoU words for possible hallucination candidates.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Interactive attention gallery (100 grids)</h2>
+      <p>
+        Use the slider to browse generated attention grids. File names follow the pattern
+        <code>attention_grid_XXXX.png</code> where <code>XXXX</code> ranges from 0000 to 0099.
+        For numeric IoU and aligned-word counts, consult <code>alignment_details.csv</code>.
+      </p>
+
+      <div class="gallery-main">
+        <img id="galleryImg" src="../task2_attention_analysis/results/figures/attention_grid_0000.png" alt="attention grid" />
+        <p class="plot-caption" id="galleryCaption">attention_grid_0000.png</p>
+      </div>
+
+      <div class="gallery-controls">
+        <div>
+          <label for="gridIndex"><strong>Grid index</strong> (0–99)</label>
+          <input id="gridIndex" type="range" min="0" max="99" value="0" step="1" />
+        </div>
+        <div>
+          <label for="gridIndexText" class="plot-caption"><strong>Now</strong></label>
+          <input id="gridIndexText" type="text" value="0" style="width:100%; padding:8px; border-radius:10px; border:1px solid #e2e8f0;" />
+        </div>
+      </div>
+
+      <div class="thumb-grid">
+        <div class="thumb" onclick="setGrid(0)">
+          <img src="../task2_attention_analysis/results/figures/attention_grid_0000.png" loading="lazy" alt="grid 0000" />
+          <span>0000</span>
+        </div>
+        <div class="thumb" onclick="setGrid(4)">
+          <img src="../task2_attention_analysis/results/figures/attention_grid_0004.png" loading="lazy" alt="grid 0004" />
+          <span>0004</span>
+        </div>
+        <div class="thumb" onclick="setGrid(8)">
+          <img src="../task2_attention_analysis/results/figures/attention_grid_0008.png" loading="lazy" alt="grid 0008" />
+          <span>0008</span>
+        </div>
+        <div class="thumb" onclick="setGrid(38)">
+          <img src="../task2_attention_analysis/results/figures/attention_grid_0038.png" loading="lazy" alt="grid 0038" />
+          <span>0038</span>
+        </div>
+      </div>
+
+      <script>
+        const pad4 = (n) => String(n).padStart(4, '0');
+        const basePath = '../task2_attention_analysis/results/figures/attention_grid_';
+        const basePath2 = '.png';
+
+        const imgEl = document.getElementById('galleryImg');
+        const capEl = document.getElementById('galleryCaption');
+        const sliderEl = document.getElementById('gridIndex');
+        const textEl = document.getElementById('gridIndexText');
+
+        function clamp(n, lo, hi) { return Math.max(lo, Math.min(hi, n)); }
+
+        function setGrid(i) {
+          i = clamp(parseInt(i, 10), 0, 99);
+          sliderEl.value = String(i);
+          textEl.value = String(i);
+          const file = 'attention_grid_' + pad4(i) + '.png';
+          imgEl.src = basePath + pad4(i) + basePath2;
+          capEl.textContent = file;
+        }
+
+        sliderEl.addEventListener('input', (e) => setGrid(e.target.value));
+        textEl.addEventListener('change', (e) => setGrid(e.target.value));
+      </script>
+    </section>
+  </main>
+</body>
+</html>

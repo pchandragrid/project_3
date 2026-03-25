@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Project 3 – Task Report (Home)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../docs/styles.css" />
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html" class="active">Report Home</a></li>
+      <li><a href="task1.html">Task 1</a></li>
+      <li><a href="task2.html">Task 2</a></li>
+      <li><a href="task3.html">Task 3</a></li>
+      <li><a href="task4.html">Task 4</a></li>
+      <li><a href="task5.html">Task 5</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Project 3 – Task Execution & Results Report</h1>
+    <p>
+      A detailed, multi-page report documenting what was implemented across all five tasks, how to run each task,
+      and where to find every important artifact and output figure.
+    </p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Quick Start</h2>
+      <p>
+        These tasks are designed to be run as Python modules from the repository root.
+      </p>
+      <h3>Prerequisite: a Task 1 checkpoint</h3>
+      <p>
+        Tasks 2–5 expect a BLIP checkpoint produced by Task 1. In the READMEs, the canonical checkpoint directory is:
+      </p>
+      <pre><code>tasks/task1_blip_optimization/checkpoints/blip_gc_mp_224</code></pre>
+
+      <h3>Recommended execution order</h3>
+      <ol>
+        <li><strong>Task 1</strong>: train/export/quantize/benchmark BLIP</li>
+        <li><strong>Task 2</strong>: attention visualization + grounding alignment</li>
+        <li><strong>Task 3</strong>: beam search + length penalty ablation (quality vs latency)</li>
+        <li><strong>Task 4</strong>: caption diversity + CAV-style steering</li>
+        <li><strong>Task 5</strong>: toxicity/bias audit + mitigation + fairness report</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Where outputs live (folder layout)</h2>
+      <pre><code>tasks/
+  task1_blip_optimization/
+    checkpoints/
+    exports/
+    results/
+  task2_attention_analysis/
+    artifacts/
+    results/
+  task3_beam_ablation/
+    artifacts/
+    results/
+  task4_style_steering/
+    artifacts/
+    results/
+  task5_fairness_safety/
+    artifacts/
+    results/</code></pre>
+    </section>
+
+    <section>
+      <h2>Appendix – Output File Index</h2>
+      <p>
+        This appendix is a “jump list” to the most important artifacts produced across all five tasks.
+        Each task page contains the full step-by-step commands and task-specific details.
+      </p>
+
+      <table style="width:100%; border-collapse: collapse; margin-top: 12px;">
+        <thead>
+          <tr>
+            <th style="border-bottom:1px solid #e2e8f0; text-align:left; padding:10px;">Task</th>
+            <th style="border-bottom:1px solid #e2e8f0; text-align:left; padding:10px;">Key outputs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Task 1</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">
+              <div><code>tasks/task1_blip_optimization/checkpoints/blip_gc_mp_224/</code></div>
+              <div><code>tasks/task1_blip_optimization/exports/onnx/</code></div>
+              <div><code>tasks/task1_blip_optimization/exports/coreml/</code></div>
+              <div><code>tasks/task1_blip_optimization/results/coreml_benchmark.md</code></div>
+            </td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Task 2</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">
+              <div><code>tasks/task2_attention_analysis/results/figures/attention_grid_*.png</code> (100 grids)</div>
+              <div><code>tasks/task2_attention_analysis/results/reports/attention_summary.md</code></div>
+              <div><code>tasks/task2_attention_analysis/results/reports/alignment_details.csv</code></div>
+              <div><code>tasks/task2_attention_analysis/artifacts/attention_maps/</code> (.npz)</div>
+              <div><code>tasks/task2_attention_analysis/artifacts/rollout_maps/</code> (.npy)</div>
+            </td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Task 3</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">
+              <div><code>tasks/task3_beam_ablation/results/figures/cider_heatmap.png</code></div>
+              <div><code>tasks/task3_beam_ablation/results/reports/beam_length_ablation_metrics.csv</code></div>
+              <div><code>tasks/task3_beam_ablation/results/reports/ablation_summary.json</code></div>
+            </td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">Task 4</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">
+              <div><code>tasks/task4_style_steering/results/figures/style_length_shift.png</code></div>
+              <div><code>tasks/task4_style_steering/results/reports/steering_outputs.csv</code></div>
+              <div><code>tasks/task4_style_steering/results/reports/style_steering_summary.json</code></div>
+              <div><code>tasks/task4_style_steering/artifacts/steering/dir_short_to_*.npy</code></div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:10px;">Task 5</td>
+            <td style="padding:10px;">
+              <div><code>tasks/task5_fairness_safety/results/figures/before_after_metrics.png</code></div>
+              <div><code>tasks/task5_fairness_safety/results/reports/fairness_report.md</code></div>
+              <div><code>tasks/task5_fairness_safety/results/reports/bias_audit.csv</code></div>
+              <div><code>tasks/task5_fairness_safety/artifacts/models/</code></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>Report pages</h2>
+      <div class="grid">
+        <div class="card"><h3>Task 1</h3><p>Training/export/quantize + CoreML benchmark.</p><p><a href="task1.html">Open</a></p></div>
+        <div class="card"><h3>Task 2</h3><p>Attention maps + rollout + grounding IoU + interactive viewer.</p><p><a href="task2.html">Open</a></p></div>
+        <div class="card"><h3>Task 3</h3><p>Beam/length ablation with CIDEr heatmap.</p><p><a href="task3.html">Open</a></p></div>
+        <div class="card"><h3>Task 4</h3><p>Diversity + CAV-style steering.</p><p><a href="task4.html">Open</a></p></div>
+        <div class="card"><h3>Task 5</h3><p>Toxicity/bias audit + mitigation + fairness report.</p><p><a href="task5.html">Open</a></p></div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,112 @@
+{
+  "diversity_jsonl": "tasks/task4_style_steering/artifacts/captions/diversity_captions.jsonl",
+  "steering_csv": "tasks/task4_style_steering/results/reports/steering_outputs.csv",
+  "summary_md": "tasks/task4_style_steering/results/reports/style_steering_summary.md",
+  "style_shift_chart": "tasks/task4_style_steering/results/figures/style_length_shift.png",
+  "mean_style_lengths": {
+    "baseline": 10.275,
+    "short": 10.7875,
+    "long": 10.45,
+    "detailed": 10.1125
+  },
+  "low_diversity_keywords": [
+    [
+      "man",
+      38
+    ],
+    [
+      "sitting",
+      21
+    ],
+    [
+      "standing",
+      20
+    ],
+    [
+      "group",
+      15
+    ],
+    [
+      "people",
+      11
+    ],
+    [
+      "table",
+      10
+    ],
+    [
+      "holding",
+      10
+    ],
+    [
+      "dog",
+      10
+    ],
+    [
+      "cake",
+      9
+    ],
+    [
+      "next",
+      8
+    ],
+    [
+      "field",
+      8
+    ],
+    [
+      "person",
+      8
+    ]
+  ],
+  "high_diversity_keywords": [
+    [
+      "two",
+      20
+    ],
+    [
+      "sitting",
+      13
+    ],
+    [
+      "man",
+      10
+    ],
+    [
+      "table",
+      9
+    ],
+    [
+      "front",
+      8
+    ],
+    [
+      "standing",
+      8
+    ],
+    [
+      "young",
+      8
+    ],
+    [
+      "dog",
+      7
+    ],
+    [
+      "people",
+      7
+    ],
+    [
+      "next",
+      6
+    ],
+    [
+      "three",
+      6
+    ],
+    [
+      "holding",
+      5
+    ]
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "num_samples": 100,
+  "pytorch_full_precision": {
+    "latency_ms_mean": 258.6665579286637,
+    "latency_ms_std": 347.66269819780973,
+    "bleu4_mean": 0.18137722340415777
+  },
+  "coreml_quantized_q4": {
+    "latency_ms_mean": 178.70652543118922,
+    "latency_ms_std": 11.04817330632731,
+    "bleu4_mean": 0.16132103408642343
+  }
+}

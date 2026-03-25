@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Image Captioning Project – Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="user_guide.html">User Guide</a></li>
+      <li><a href="architecture.html">Architecture</a></li>
+      <li><a href="analysis.html">Analysis & Results</a></li>
+      <li><a href="developer_guide.html">Developer Guide</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Image Captioning Project</h1>
+    <p>
+      An advanced AI system that translates visual content into natural language descriptions using state-of-the-art Transformer models.
+    </p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Executive Summary</h2>
+      <p>
+        This project implements an end-to-end <strong>Image Captioning System</strong> capable of automatically generating descriptive text for any given image. By leveraging and fine-tuning powerful vision-language models—<strong>BLIP</strong>, <strong>ViT-GPT2</strong>, and <strong>GIT</strong>—we achieve high-quality, human-like captions.
+      </p>
+      <p>
+        The system is designed not just for performance but for usability and experimentation. It includes a training pipeline for custom datasets (MS COCO), a comprehensive evaluation suite using industry-standard metrics like <strong>CIDEr</strong>, and a user-friendly <strong>Streamlit web application</strong> for real-time inference.
+      </p>
+      <div style="margin-top: 20px;">
+        <span class="tag">Computer Vision</span>
+        <span class="tag">NLP</span>
+        <span class="tag">Transformers</span>
+        <span class="tag">PyTorch</span>
+        <span class="tag">Streamlit</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Key Features</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Multi-Model Support</h3>
+          <p>
+            Compare results from three distinct architectures: BLIP (Bootstrapping Language-Image Pre-training), ViT-GPT2, and GIT (Generative Image-to-text Transformer).
+          </p>
+        </div>
+        <div class="card">
+          <h3>Interactive Web App</h3>
+          <p>
+            A polished Streamlit interface allows users to upload images, tweak generation parameters (Beam Search, Max Length), and visualize attention maps.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Advanced Training</h3>
+          <p>
+            Custom training loops with gradient checkpointing, mixed-precision training (MPS/CUDA), and early stopping based on validation CIDEr scores.
+          </p>
+        </div>
+        <div class="card">
+          <h3>In-Depth Analysis</h3>
+          <p>
+            Tools to analyze the impact of caption length, beam search size, and dataset quality on model performance.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Project Goals</h2>
+      <ul>
+        <li><strong>Performance:</strong> Improve CIDEr scores by >10% over baseline pre-trained models through fine-tuning on COCO.</li>
+        <li><strong>Usability:</strong> Democratize access to advanced AI models via a simple web interface.</li>
+        <li><strong>Research:</strong> Understand the trade-offs between different transformer architectures for vision-language tasks.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Where to Go Next</h2>
+      <div class="grid">
+        <div class="card">
+          <h3><a href="user_guide.html">User Guide &rarr;</a></h3>
+          <p>Learn how to use the web application to generate captions.</p>
+        </div>
+        <div class="card">
+          <h3><a href="architecture.html">Architecture &rarr;</a></h3>
+          <p>Deep dive into the models, training pipeline, and system design.</p>
+        </div>
+        <div class="card">
+          <h3><a href="analysis.html">Analysis & Results &rarr;</a></h3>
+          <p>View performance metrics, plots, and experimental findings.</p>
+        </div>
+        <div class="card">
+          <h3><a href="developer_guide.html">Developer Guide &rarr;</a></h3>
+          <p>Setup instructions, code structure, and contribution guidelines.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

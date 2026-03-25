@@ -1,0 +1,31 @@
+{
+  "metrics_csv": "tasks/task3_beam_ablation/results/reports/beam_length_ablation_metrics.csv",
+  "heatmap_png": "tasks/task3_beam_ablation/results/figures/cider_heatmap.png",
+  "summary_md": "tasks/task3_beam_ablation/results/reports/ablation_summary.md",
+  "best_quality": {
+    "beam_size": 3,
+    "length_penalty": 0.8,
+    "bleu4": 0.23106403058744573,
+    "meteor": 0.4383176968116727,
+    "cider": 2.8705798923298924,
+    "rouge_l": 0.49304512715438115,
+    "mean_caption_length": 10.026,
+    "mean_latency_ms": 347.92191098368494,
+    "p95_latency_ms": 424.7850833446134,
+    "samples": 500,
+    "artifact": "tasks/task3_beam_ablation/artifacts/captions/captions_beam3_lp0.8.jsonl"
+  },
+  "best_tradeoff": {
+    "beam_size": 1,
+    "length_penalty": 1.2,
+    "bleu4": 0.20977114561520624,
+    "meteor": 0.43075626326591065,
+    "cider": 2.760683746808747,
+    "rouge_l": 0.48884356319132827,
+    "mean_caption_length": 10.088,
+    "mean_latency_ms": 133.6844286036212,
+    "p95_latency_ms": 162.0320229514618,
+    "samples": 500,
+    "artifact": "tasks/task3_beam_ablation/artifacts/captions/captions_beam1_lp1.2.jsonl"
+  }
+}

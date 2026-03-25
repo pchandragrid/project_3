@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Analysis & Results – Image Captioning Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="user_guide.html">User Guide</a></li>
+      <li><a href="architecture.html">Architecture</a></li>
+      <li><a href="analysis.html" class="active">Analysis & Results</a></li>
+      <li><a href="developer_guide.html">Developer Guide</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Analysis & Results</h1>
+    <p>
+      Comprehensive evaluation of model performance, including beam search experiments and caption length analysis.
+    </p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Performance Metrics</h2>
+      <p>
+        We primarily use the <strong>CIDEr</strong> (Consensus-based Image Description Evaluation) score to measure the quality of generated captions.
+      </p>
+      <div class="card">
+        <h3>Why CIDEr?</h3>
+        <p>
+          Unlike BLEU or METEOR, CIDEr is specifically designed for image captioning. It rewards captions that capture the consensus of multiple human references, making it a robust metric for "human-likeness."
+        </p>
+        <p>
+          <strong>Goal:</strong> Improve CIDEr by >10% over baseline.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Experiment 1: Beam Search vs. Quality</h2>
+      <p>
+        We investigated the impact of <strong>Beam Size</strong> on caption quality. Beam search explores multiple potential sentence completions in parallel, rather than just picking the single most likely word at each step (Greedy Search).
+      </p>
+      
+      <div class="plot">
+        <img src="images/beam_search_experiment.png" alt="Beam search experiment plot" />
+        <div class="plot-caption">
+          Figure 1: CIDEr scores across different beam sizes for BLIP, ViT-GPT2, and GIT.
+        </div>
+      </div>
+
+      <h3>Key Findings</h3>
+      <ul>
+        <li><strong>Improvement:</strong> Increasing beam size generally improves CIDEr scores, especially from 1 (Greedy) to 3.</li>
+        <li><strong>Diminishing Returns:</strong> Beyond a beam size of 5, the improvement plateaus or even degrades slightly due to the model generating overly generic or repetitive phrases.</li>
+        <li><strong>Recommendation:</strong> A beam size of 3-5 offers the best trade-off between quality and inference speed.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Experiment 2: Caption Length Analysis</h2>
+      <p>
+        We analyzed how model performance varies with the length of the ground-truth captions. Are models better at short, simple descriptions or long, complex ones?
+      </p>
+
+      <div class="plot">
+        <img src="images/caption_length_analysis.png" alt="Caption length analysis plot" />
+        <div class="plot-caption">
+          Figure 2: CIDEr scores broken down by caption length category (Short, Medium, Long).
+        </div>
+      </div>
+
+      <h3>Key Findings</h3>
+      <ul>
+        <li><strong>Short Captions:</strong> Models perform best on short, concise captions. The vocabulary is often simpler and the sentence structure more predictable.</li>
+        <li><strong>Long Captions:</strong> Performance degrades as caption length increases. Long captions require capturing more details and complex relationships between objects, which is challenging for current models.</li>
+        <li><strong>Implication:</strong> For applications requiring detailed descriptions, models might need specialized training on longer text or different architectures (e.g., larger context windows).</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Summary of Results</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Best Performing Model</h3>
+          <p>
+            <strong>BLIP</strong> consistently achieved the highest CIDEr scores across all experiments, demonstrating superior robustness and generalization.
+          </p>
+        </div>
+        <div class="card">
+          <h3>Efficiency Winner</h3>
+          <p>
+            <strong>ViT-GPT2</strong> offered the fastest inference times, making it suitable for real-time applications where latency is critical, despite slightly lower accuracy.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

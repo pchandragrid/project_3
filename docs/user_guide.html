@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User Guide – Image Captioning Project</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="user_guide.html" class="active">User Guide</a></li>
+      <li><a href="architecture.html">Architecture</a></li>
+      <li><a href="analysis.html">Analysis & Results</a></li>
+      <li><a href="developer_guide.html">Developer Guide</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>User Guide</h1>
+    <p>
+      Learn how to use the Image Captioning Web Application to generate descriptions for your images.
+    </p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Accessing the Application</h2>
+      <p>
+        The application is available as a web-based interface built with Streamlit. You can access it in two ways:
+      </p>
+      <ol>
+        <li>
+          <strong>Online (Hugging Face Spaces):</strong> Visit the hosted version at <a href="https://huggingface.co/spaces/pchandragrid/image_captioning" target="_blank">huggingface.co/spaces/pchandragrid/image_captioning</a>.
+        </li>
+        <li>
+          <strong>Locally:</strong> Follow the <a href="developer_guide.html">Developer Guide</a> to run the app on your own machine.
+        </li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Step-by-Step Instructions</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>1. Upload an Image</h3>
+          <p>
+            Click the "Browse files" button or drag and drop an image file (JPG, PNG, JPEG) into the upload area. The app supports standard image formats.
+          </p>
+        </div>
+        <div class="card">
+          <h3>2. Select Models</h3>
+          <p>
+            In the sidebar (left panel), choose which AI models you want to use. You can select one or multiple models to compare their outputs side-by-side.
+            <ul>
+              <li><strong>BLIP:</strong> Best overall performance.</li>
+              <li><strong>ViT-GPT2:</strong> Faster but slightly less accurate.</li>
+              <li><strong>GIT:</strong> Good for detailed descriptions.</li>
+            </ul>
+          </p>
+        </div>
+        <div class="card">
+          <h3>3. Adjust Settings (Optional)</h3>
+          <p>
+            Fine-tune the generation process using the sidebar controls:
+            <ul>
+              <li><strong>Beam Size:</strong> Controls the search width. Higher values (e.g., 5) generally produce better captions but take longer.</li>
+              <li><strong>Max Length:</strong> The maximum number of words in the generated caption.</li>
+            </ul>
+          </p>
+        </div>
+        <div class="card">
+          <h3>4. Generate Captions</h3>
+          <p>
+            Click the <strong>"Generate Captions"</strong> button. The app will process the image and display the results below.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Understanding the Controls</h2>
+      <h3>Beam Search vs. Greedy Search</h3>
+      <p>
+        By default, models might use "Greedy Search," picking the most likely next word at each step. <strong>Beam Search</strong> explores multiple potential sentence paths simultaneously.
+      </p>
+      <ul>
+        <li><strong>Beam Size = 1:</strong> Greedy Search (fastest).</li>
+        <li><strong>Beam Size > 1:</strong> Beam Search (better quality). We recommend a Beam Size of 3-5 for the best balance.</li>
+      </ul>
+
+      <h3>Max Length & Min Length</h3>
+      <p>
+        These settings constrain the output. If you want short, punchy captions, reduce the Max Length. For more detailed descriptions, increase it (though the model might start repeating itself if set too high).
+      </p>
+    </section>
+
+    <section>
+      <h2>Interpreting Results</h2>
+      <p>
+        Once generation is complete, you will see:
+      </p>
+      <ul>
+        <li><strong>Generated Caption:</strong> The text description produced by the model.</li>
+        <li><strong>Confidence Score (BLIP only):</strong> How confident the model is in its prediction.</li>
+        <li><strong>Attention Map (BLIP only):</strong> A heatmap overlay showing which parts of the image the model focused on while generating specific words.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

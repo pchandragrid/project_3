@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+.venv_coreml/
+
+# OS/editor
+.DS_Store
+
+# Large artifacts
+checkpoints/
+exports/
+logs/
+results/training_logs/
+outputs/checkpoints/
+outputs/models/
+
+# Raw datasets and generated subsets
+src/data/raw/train2017/
+src/data/raw/val2017/
+src/data/raw/captions_train.jsonl
+src/data/raw/instances_val2017.json
+src/data/raw/captions_validation.jsonl
+src/data/processed/subset_*.jsonl
+
+# Large model files
+*.safetensors
+*.onnx
+*.mlpackage/
+

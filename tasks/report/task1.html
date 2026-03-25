@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Project 3 – Task 1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../docs/styles.css" />
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="index.html">Report Home</a></li>
+      <li><a href="task1.html" class="active">Task 1</a></li>
+      <li><a href="task2.html">Task 2</a></li>
+      <li><a href="task3.html">Task 3</a></li>
+      <li><a href="task4.html">Task 4</a></li>
+      <li><a href="task5.html">Task 5</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <h1>Task 1 – BLIP Optimization (Memory-Efficient Training + CoreML Export)</h1>
+    <p>
+      This task fine-tunes BLIP on a subset of COCO captions, exports to ONNX, converts to CoreML, quantizes,
+      and benchmarks latency/quality.
+    </p>
+  </header>
+
+  <main>
+    <section>
+      <h2>What this task does</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>1) Memory-efficient fine-tuning</h3>
+          <p>
+            Uses gradient checkpointing and mixed precision for forward passes (fp16) with careful loss handling.
+            Training resolution is 224px.
+          </p>
+        </div>
+        <div class="card">
+          <h3>2) Exports to ONNX</h3>
+          <p>
+            Exports encoder + decoder with dynamic axes so exported runtime supports variable token lengths.
+          </p>
+        </div>
+        <div class="card">
+          <h3>3) Converts to CoreML + quantizes</h3>
+          <p>
+            Converts to CoreML using a recommended configuration (<code>CPU_AND_NE</code>) and applies 4-bit quantization.
+          </p>
+        </div>
+        <div class="card">
+          <h3>4) Benchmarks</h3>
+          <p>
+            Compares PyTorch (full precision) vs quantized CoreML on latency and BLEU-4.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Folder layout</h2>
+      <pre><code>tasks/task1_blip_optimization/
+  checkpoints/
+  exports/
+    onnx/
+    coreml/
+  results/
+  train_blip_memory_efficient.py
+  export_onnx.py
+  convert_coreml.py
+  benchmark.py</code></pre>
+    </section>
+
+    <section>
+      <h2>How to run (step-by-step)</h2>
+      <h3>1) Train</h3>
+      <pre><code>python -m tasks.task1_blip_optimization.train_blip_memory_efficient \
+  --annotation_path src/data/processed/subset_10k.jsonl \
+  --image_dir src/data/raw/train2017 \
+  --batch_size 4 \
+  --image_size 224</code></pre>
+
+      <h3>2) Export ONNX</h3>
+      <pre><code>python -m tasks.task1_blip_optimization.export_onnx</code></pre>
+
+      <h3>3) Convert to CoreML + quantize</h3>
+      <pre><code>python -m tasks.task1_blip_optimization.convert_coreml \
+  --compute_units CPU_AND_NE \
+  --conversion_mode torch</code></pre>
+
+      <h3>4) Benchmark</h3>
+      <pre><code>python -m tasks.task1_blip_optimization.benchmark \
+  --compute_units CPU_AND_NE \
+  --num_samples 100</code></pre>
+    </section>
+
+    <section>
+      <h2>Key outputs</h2>
+      <ul>
+        <li>Checkpoint: <code>tasks/task1_blip_optimization/checkpoints/blip_gc_mp_224/</code></li>
+        <li>ONNX exports: <code>tasks/task1_blip_optimization/exports/onnx/</code></li>
+        <li>CoreML exports: <code>tasks/task1_blip_optimization/exports/coreml/</code></li>
+        <li>Benchmark files:
+          <code>tasks/task1_blip_optimization/results/coreml_benchmark.json</code>
+          and <code>tasks/task1_blip_optimization/results/coreml_benchmark.md</code>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Observed results (current repo run)</h2>
+      <p><strong>Evaluated on 100 samples</strong></p>
+      <table style="width:100%; border-collapse: collapse; margin-top: 12px;">
+        <thead>
+          <tr>
+            <th style="border-bottom:1px solid #e2e8f0; text-align:left; padding:10px;">Model</th>
+            <th style="border-bottom:1px solid #e2e8f0; text-align:left; padding:10px;">Mean Latency (ms)</th>
+            <th style="border-bottom:1px solid #e2e8f0; text-align:left; padding:10px;">Std (ms)</th>
+            <th style="border-bottom:1px solid #e2e8f0; text-align:left; padding:10px;">BLEU-4</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">PyTorch (full precision)</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">258.67</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">347.66</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">0.1814</td>
+          </tr>
+          <tr>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">CoreML (4-bit quantized)</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">178.71</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">11.05</td>
+            <td style="border-bottom:1px solid #f1f5f9; padding:10px;">0.1613</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>Interpretation</h3>
+      <ul>
+        <li>CoreML reduces mean latency and substantially reduces latency variance in this benchmark setup.</li>
+        <li>BLEU-4 decreases slightly under 4-bit quantization.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Notes / troubleshooting</h2>
+      <ul>
+        <li>CoreML conversion is most reliable with a Python 3.11/3.12 environment.</li>
+        <li>If ONNX→CoreML conversion fails in your local stack, this repo supports a conversion mode that handles conversion from wrappers.</li>
+      </ul>
+    </section>
+  </main>
+</body>
+</html>

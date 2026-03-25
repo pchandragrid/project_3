@@ -1,0 +1,101 @@
+image,caption,caption_length,mean_alignment_iou,num_aligned_words,figure_path
+000000397133.jpg,a man is preparing a pizza in a kitchen.,9,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0000.png
+000000037777.jpg,"a kitchen with a stove, refrigerator, and a refrigerator.",9,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0001.png
+000000252219.jpg,a group of people standing in front of a store.,10,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0002.png
+000000087038.jpg,a man is doing a trick on a skateboard.,9,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0003.png
+000000174482.jpg,a bicycle is parked on a sidewalk near a car.,10,0.4743878865979381,1,tasks/task2_attention_analysis/results/figures/attention_grid_0004.png
+000000403385.jpg,"a bathroom with a toilet, sink, and mirror.",8,0.06881727005870841,1,tasks/task2_attention_analysis/results/figures/attention_grid_0005.png
+000000006818.jpg,"a bathroom with a toilet, sink, and a mirror.",9,0.02069672131147541,1,tasks/task2_attention_analysis/results/figures/attention_grid_0006.png
+000000480985.jpg,a man is riding a skateboard on a ramp.,9,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0007.png
+000000458054.jpg,a toilet with a black seat and a black top,10,0.8597381161971831,1,tasks/task2_attention_analysis/results/figures/attention_grid_0008.png
+000000331352.jpg,a toilet with a seat and a handlebars,8,0.40205128205128204,1,tasks/task2_attention_analysis/results/figures/attention_grid_0009.png
+000000296649.jpg,a group of people riding motorcycles on a city street.,10,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0010.png
+000000386912.jpg,a woman sitting at a table with a laptop and a cake.,12,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0011.png
+000000502136.jpg,a doorway with a bunch of different items on it.,10,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0012.png
+000000491497.jpg,"a bedroom with a bed, dresser, television, and a dresser.",10,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0013.png
+000000184791.jpg,"a painting of a bottle, a plate of fruit, and a glass of wine.",14,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0014.png
+000000348881.jpg,a large jet is sitting on the tarmac.,8,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0015.png
+000000289393.jpg,a dog is standing on a table with a vase on it.,12,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0016.png
+000000522713.jpg,a bench sitting on top of a lush green field.,10,0.034899088541666665,1,tasks/task2_attention_analysis/results/figures/attention_grid_0017.png
+000000181666.jpg,a large group of people standing in a desert.,9,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0018.png
+000000017627.jpg,a street with cars and a bus on it.,9,0.1187109375,1,tasks/task2_attention_analysis/results/figures/attention_grid_0019.png
+000000143931.jpg,a blue bus is parked in front of a building.,10,0.981796875,1,tasks/task2_attention_analysis/results/figures/attention_grid_0020.png
+000000303818.jpg,a group of people standing on a street.,8,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0021.png
+000000463730.jpg,a group of people standing in a parking lot.,9,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0022.png
+000000460347.jpg,a car is driving on the street with a lot of cars.,12,0.024857289227166277,1,tasks/task2_attention_analysis/results/figures/attention_grid_0023.png
+000000322864.jpg,a yellow taxi is parked on the side of a street.,11,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0024.png
+000000226111.jpg,a street sign that says no parking at a corner.,10,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0025.png
+000000153299.jpg,two giraffes standing next to each other in front of a building.,12,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0026.png
+000000308394.jpg,a man sitting on a train with a red seat and a red seat cushion.,15,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0027.png
+000000456496.jpg,a man is riding a skateboard on a sidewalk.,9,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0028.png
+000000058636.jpg,a street sign that says the name of a street.,10,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0029.png
+000000041888.jpg,a couple of birds standing in a field.,8,0.12685872395833334,1,tasks/task2_attention_analysis/results/figures/attention_grid_0030.png
+000000184321.jpg,a train is traveling on the tracks near a light pole.,11,0.0393359375,1,tasks/task2_attention_analysis/results/figures/attention_grid_0031.png
+000000565778.jpg,a train is traveling on the tracks near a forest.,10,0.29109375,1,tasks/task2_attention_analysis/results/figures/attention_grid_0032.png
+000000297343.jpg,a red stop sign sitting on top of a sidewalk.,10,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0033.png
+000000336587.jpg,a red stop sign sitting on top of a street.,10,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0034.png
+000000122745.jpg,a red stop sign sitting on top of a pole.,10,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0035.png
+000000219578.jpg,a dog is sitting on a couch with a stuffed toy.,11,0.396783518735363,1,tasks/task2_attention_analysis/results/figures/attention_grid_0036.png
+000000555705.jpg,a cat sitting on a ledge with a pair of shoes.,11,0.7316501010781671,1,tasks/task2_attention_analysis/results/figures/attention_grid_0037.png
+000000443303.jpg,a cat sitting on top of a black suitcase.,9,0.358576,1,tasks/task2_attention_analysis/results/figures/attention_grid_0038.png
+000000500663.jpg,a field with a few animals in it,8,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0039.png
+000000418281.jpg,a cow grazing in a field near a building.,9,0.09845213700234191,1,tasks/task2_attention_analysis/results/figures/attention_grid_0040.png
+000000025560.jpg,a cat sitting on a tv stand watching television.,9,0.195126953125,1,tasks/task2_attention_analysis/results/figures/attention_grid_0041.png
+000000403817.jpg,a cat sitting on a desk watching television.,8,0.473472,1,tasks/task2_attention_analysis/results/figures/attention_grid_0042.png
+000000085329.jpg,a woman with a necklace and a necklace on,9,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0043.png
+000000329323.jpg,a group of people standing around a woman holding a teddy bear.,12,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0044.png
+000000239274.jpg,a boat is in the middle of a body of water.,11,0.30089285714285713,1,tasks/task2_attention_analysis/results/figures/attention_grid_0045.png
+000000286994.jpg,a lone elephant drinking water at a watering hole.,9,0.04346028645833333,1,tasks/task2_attention_analysis/results/figures/attention_grid_0046.png
+000000511321.jpg,a boat is in the water near a city.,9,0.1721860362997658,1,tasks/task2_attention_analysis/results/figures/attention_grid_0047.png
+000000314294.jpg,two elephants standing in a field with a rock wall.,10,0.1380859375,1,tasks/task2_attention_analysis/results/figures/attention_grid_0048.png
+000000233771.jpg,a group of people holding umbrellas in a city.,9,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0049.png
+000000475779.jpg,an elephant walking through a lush green field.,8,0.5487858072916667,1,tasks/task2_attention_analysis/results/figures/attention_grid_0050.png
+000000301867.jpg,a group of young women standing next to each other.,10,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0051.png
+000000312421.jpg,a black refrigerator sitting on top of a counter.,9,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0052.png
+000000185250.jpg,a man in a red shirt and blue jeans standing next to a dog.,14,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0053.png
+000000356427.jpg,a man standing next to a train platform.,8,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0054.png
+000000572517.jpg,a large white bear standing on top of a rock.,10,0.12375442216981132,1,tasks/task2_attention_analysis/results/figures/attention_grid_0055.png
+000000270244.jpg,a lone zebra standing in a lush green field.,9,0.1796692464953271,1,tasks/task2_attention_analysis/results/figures/attention_grid_0056.png
+000000516316.jpg,two zebras eating grass on a field by the beach.,10,0.059677734375,1,tasks/task2_attention_analysis/results/figures/attention_grid_0057.png
+000000125211.jpg,a close up of a zebra standing in a field,10,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0058.png
+000000562121.jpg,a zebra is standing in the dirt near the water.,10,0.108528359030837,1,tasks/task2_attention_analysis/results/figures/attention_grid_0059.png
+000000360661.jpg,a group of people riding horses on a beach.,9,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0060.png
+000000016228.jpg,a man riding a horse on a street.,8,0.140625,1,tasks/task2_attention_analysis/results/figures/attention_grid_0061.png
+000000382088.jpg,a horse standing in a field with a fence.,9,0.31233861502347415,1,tasks/task2_attention_analysis/results/figures/attention_grid_0062.png
+000000266409.jpg,a man in a blue jacket is standing in the snow.,11,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0063.png
+000000430961.jpg,a man in uniform pitching a baseball at a game.,10,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0064.png
+000000080671.jpg,a young boy riding skis down a snow covered slope.,10,0.044269613583138176,1,tasks/task2_attention_analysis/results/figures/attention_grid_0065.png
+000000577539.jpg,"a plate of chocolate, sprinkles, and a cake.",8,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0066.png
+000000104612.jpg,a plate of meat and vegetables on a table.,9,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0067.png
+000000476258.jpg,a man riding a skateboard down a sidewalk.,8,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0068.png
+000000448365.jpg,a man is riding a skateboard on a ramp.,9,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0069.png
+000000035197.jpg,a man is riding a skateboard on a ramp.,9,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0070.png
+000000349860.jpg,a man is doing a trick on a ramp.,9,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0071.png
+000000180135.jpg,a man holding a skateboard with a lot of items on it.,12,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0072.png
+000000486438.jpg,a plate of chocolate donuts on a table.,8,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0073.png
+000000400573.jpg,a man eating a sandwich in front of a tree.,10,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0074.png
+000000109798.jpg,"a plate of donuts with chocolate, oranges and a chocolate cake.",11,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0075.png
+000000370677.jpg,three men in red shirts stand in front of donuts.,10,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0076.png
+000000238866.jpg,a display of many different kinds of donuts.,8,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0077.png
+000000369370.jpg,a sandwich with a lot of toppings on it.,9,0.763759765625,1,tasks/task2_attention_analysis/results/figures/attention_grid_0078.png
+000000502737.jpg,a person holding a piece of chocolate cake.,8,0.993505859375,1,tasks/task2_attention_analysis/results/figures/attention_grid_0079.png
+000000515579.jpg,a man is holding a tennis racket in front of a gate.,12,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0080.png
+000000515445.jpg,a man standing on a beach watching the sun set.,10,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0081.png
+000000173383.jpg,a table with a bunch of items on it.,9,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0082.png
+000000438862.jpg,two men in orange shirts playing soccer on a field.,10,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0083.png
+000000180560.jpg,a woman and a woman holding a birthday cake.,9,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0084.png
+000000347693.jpg,"a living room with a couch, a table, and a television.",11,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0085.png
+000000039956.jpg,"a living room with a couch, a coffee table, a laptop, and a television.",14,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0086.png
+000000321214.jpg,a baby eating a piece of cake with a fork.,10,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0087.png
+000000474028.jpg,a group of young men playing frisbee.,7,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0088.png
+000000066523.jpg,a bed with a white blanket and a white blanket.,10,0.458779296875,1,tasks/task2_attention_analysis/results/figures/attention_grid_0089.png
+000000355257.jpg,a man is sitting at a desk with a laptop and a monitor.,13,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0090.png
+000000142092.jpg,a pizza sitting on top of a wooden board.,9,0.402158203125,1,tasks/task2_attention_analysis/results/figures/attention_grid_0091.png
+000000063154.jpg,a man on a surfboard rides a wave in the ocean.,11,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0092.png
+000000199551.jpg,a bed with a white blanket and a pink blanket.,10,0.5981308411214953,1,tasks/task2_attention_analysis/results/figures/attention_grid_0093.png
+000000239347.jpg,a man is sitting at a table with a cake on it.,12,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0094.png
+000000514508.jpg,a pink and white bus with a group of people inside.,11,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0095.png
+000000473237.jpg,a young boy eating a slice of pizza.,8,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0096.png
+000000228144.jpg,a woman sitting on a chair in a kitchen.,9,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0097.png
+000000206027.jpg,a pizza on a plate with a drink on a table.,11,0.301875,1,tasks/task2_attention_analysis/results/figures/attention_grid_0098.png
+000000078915.jpg,a man is swinging a tennis racquet at a ball.,10,0.0,0,tasks/task2_attention_analysis/results/figures/attention_grid_0099.png
