@@ -130,7 +130,7 @@
       </p>
 
       <div class="gallery-main">
-        <img id="galleryImg" src="../task2_attention_analysis/results/figures/attention_grid_0000.png" alt="attention grid" />
+        <img id="galleryImg" src="images/attention_grid_0000.png" alt="attention grid" />
         <p class="plot-caption" id="galleryCaption">attention_grid_0000.png</p>
       </div>
 
@@ -147,26 +147,26 @@
 
       <div class="thumb-grid">
         <div class="thumb" onclick="setGrid(0)">
-          <img src="../task2_attention_analysis/results/figures/attention_grid_0000.png" loading="lazy" alt="grid 0000" />
+          <img src="images/attention_grid_0000.png" loading="lazy" alt="grid 0000" />
           <span>0000</span>
         </div>
         <div class="thumb" onclick="setGrid(4)">
-          <img src="../task2_attention_analysis/results/figures/attention_grid_0004.png" loading="lazy" alt="grid 0004" />
+          <img src="images/attention_grid_0004.png" loading="lazy" alt="grid 0004" />
           <span>0004</span>
         </div>
         <div class="thumb" onclick="setGrid(8)">
-          <img src="../task2_attention_analysis/results/figures/attention_grid_0008.png" loading="lazy" alt="grid 0008" />
+          <img src="images/attention_grid_0008.png" loading="lazy" alt="grid 0008" />
           <span>0008</span>
         </div>
         <div class="thumb" onclick="setGrid(38)">
-          <img src="../task2_attention_analysis/results/figures/attention_grid_0038.png" loading="lazy" alt="grid 0038" />
+          <img src="images/attention_grid_0038.png" loading="lazy" alt="grid 0038" />
           <span>0038</span>
         </div>
       </div>
 
       <script>
         const pad4 = (n) => String(n).padStart(4, '0');
-        const basePath = '../task2_attention_analysis/results/figures/attention_grid_';
+        const basePath = 'images/attention_grid_';
         const basePath2 = '.png';
 
         const imgEl = document.getElementById('galleryImg');
